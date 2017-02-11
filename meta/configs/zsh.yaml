@@ -1,0 +1,4 @@
+- link:
+    ~/.zshrc:       shells/zsh/zshrc
+    ~/.antigen.zsh: shells/zsh/antigen.zsh
+#  vim: set filetype=yaml ts=4 sw=4 tw=0 et :

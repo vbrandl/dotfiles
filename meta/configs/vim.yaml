@@ -1,0 +1,7 @@
+- link:
+    ~/.vim:     editors/vim
+    ~/.vimrc:   editors/vim/vimrc
+
+- shell:
+    - [vim -c 'PluginInstall' +qall, Installing vim plugins]
+#  vim: set filetype=yaml ts=4 sw=4 tw=0 et :

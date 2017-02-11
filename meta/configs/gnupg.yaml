@@ -1,0 +1,8 @@
+- shell:
+    - [mkdir -p ~/.gnupg, Create gnupg config directory]
+
+- link:
+    ~/.gnupg/gpg.conf:       tools/crypto/gpg/gpg.conf
+    ~/.gnupg/gpg-agent.conf: tools/crypto/gpg/gpg-agent.conf
+    ~/.gnupg/dirmngr.conf: tools/crypto/gpg/dirmngr.conf
+#  vim: set filetype=yaml ts=4 sw=4 tw=0 et :
