@@ -247,7 +247,8 @@ exec_always exec compton -f
 exec_always exec xbindkeys
 
 exec_once exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always exec /usr/bin/redshift 
+exec_once exec /usr/bin/redshift 
+exec_once exec dunst
 
 exec_always exec conky -c ~/.conkyrc
 # map esc to capslock
