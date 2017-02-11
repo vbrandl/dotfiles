@@ -1,0 +1,54 @@
+mpd_host = localhost
+mpd_port = 6600 
+mpd_connection_timeout = 5
+mpd_music_dir = ~/Musik
+mpd_crossfade_time = 5
+
+user_interface = "alternative"
+
+alternative_header_first_line_format = "$(12)─┤ $b$(2)%a$(end)$/b ├─$(end)"
+alternative_header_second_line_format = "$(14)%t (%y)$(end)"
+alternative_ui_separator_color = 14
+
+color1 = 2
+color2 = 14
+main_window_highlight_color = yellow
+main_window_color = 4
+
+# visualizer
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_in_stereo = yes
+visualizer_sync_interval = "30" 
+visualizer_type = "wave_filled"
+visualizer_color = 246,245,244,243,242,241,240,239,238,237,236,235
+visualizer_look = "|○"
+
+autocenter_mode = "yes"
+song_list_format = " $4%a $5//$8 %t"
+song_status_format = " $2%a $4⟫$3⟫ $8%t $4⟫$3⟫ $5%b "
+browser_sort_mode = name
+browser_sort_format = {%a - }{%t}|{%f} {(%l)}
+song_columns_list_format = "(3)[]{} (22)[magenta]{a} (20)[white]{t|f} (53)[black]{b|D} (4)[yellow]{l}"
+now_playing_prefix = "$b$2>$6> "
+now_playing_suffix = "$8$/b"
+progressbar_look = "──━"
+enable_window_title = no
+progressbar_elapsed_color = red
+header_visibility = no 
+titles_visibility = no 
+statusbar_visibility = no 
+follow_now_playing_lyrics = yes
+allow_for_physical_item_deletion = yes
+ask_before_clearing_playlists = no 
+clock_display_seconds = yes
+display_bitrate = yes
+mouse_support = yes
+tags_separator = " | "
+external_editor = vim 
+colors_enabled = yes
+empty_tag_color = cyan
+#main_window_color = green 
+#main_window_highlight_color = green 
+progressbar_color = magenta
+statusbar_color = blue   
+/* vim: set filetype=dosini ts=4 sw=4 tw=120 noet :*/
