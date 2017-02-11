@@ -1,0 +1,75 @@
+source ~/.zsh/antigen.zsh
+
+antigen bundle robbyrussell/oh-my-zsh lib/
+antigen use oh-my-zsh
+antigen bundle jump
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+# autosuggestions based on the history
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle git
+antigen bundle tmux
+antigen bundle tmuxinator
+# cargo autocomplete
+antigen bundle cargo
+# magnet link to torrent file with magnet_to_torrent
+antigen bundle torrent
+
+antigen bundle rupa/z
+
+# maven
+antigen bundle mvn
+
+antigen bundle rand-quote
+
+# ssh-agent
+antigen bundle ssh-agent
+
+antigen bundle https://github.com/bobthecow/git-flow-completion
+
+antigen apply
+
+export PATH=~/.rakudobrew/bin:~/.gem/ruby/2.3.0/bin:$PATH
+eval "$(/home/me/.rakudobrew/bin/rakudobrew init -)"
+
+# antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
+antigen theme https://github.com/agnoster/agnoster-zsh-theme.git agnoster
+
+source $HOME/.cargo/env
+
+# fix font rendering in Java
+export JAVA_OPTS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+export EDITOR=/usr/bin/vim
+# map vi to vim
+alias vi=$EDITOR
+ 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# print execution time if > 10 seconds
+export REPORTTIME=10
+
+# better shell colors
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# alias to upload a file to sprunge.us
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+
+# sudo with aliases
+# If the last character of the alias value is a space or tab character, then the next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
+
+# get tmux to work with true color
+# alias tmux='TERM=xterm-256color tmux'
+alias tmux='tmux -2'
+alias mux='tmuxinator start'
+
+alias prm=". $HOME/tools/prm/prm.sh"
+
+# multiple tabs in termite
+source /etc/profile.d/vte.sh
+
+#  vim: set filetype=zsh ts=4 sw=4 tw=0 et :

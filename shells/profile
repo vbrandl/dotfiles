@@ -1,0 +1,8 @@
+# ~/.profile
+
+# start window manager on login
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+    exec startx
+    export QT_QPA_PLATFORMTHEME='gtk2'
+fi
+#  vim: set filetype=zsh ts=4 sw=4 tw=120 et :

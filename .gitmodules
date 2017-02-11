@@ -2,3 +2,7 @@
 	path = editors/vim/bundle/Vundle.vim
 	url = git@github.com:VundleVim/Vundle.vim.git
 	branch = master
+[submodule "terminals/colors/base16-shell"]
+	path = terminals/colors/base16-shell
+	url = git@github.com:chriskempson/base16-shell.git
+	branch = master
