@@ -1,0 +1,29 @@
+[user]
+	email = vbrandl@riseup.net
+	name = Valentin Brandl
+	signingkey = 0x7FB009175885FC76
+
+[commit]
+	gpgsign = true
+
+[color]
+	branch = true
+	diff = true
+	grep = true
+	pager = true
+	status = true
+	ui = always
+
+[core]
+	autocrlf = input
+	editor = vim
+
+[push]
+	default = simple
+
+[url "git@github.com:"]
+	insteadOf = gh:
+	insteadOf = github:
+
+[github]
+	user = vbrandl
