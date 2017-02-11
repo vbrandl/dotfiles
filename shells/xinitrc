@@ -1,5 +1,0 @@
-#!/bin/sh
-# ~/.xinitrc
-
-# exec startxfce4
-exec i3
