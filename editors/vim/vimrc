@@ -32,6 +32,8 @@ colorscheme onedark
 set directory=$HOME/.vim/swapfiles//
 " set backupdir=$HOME/.vim/backupdir//
 set undodir=$HOME/.vim/undofiles//
+" search tags file downwards from the direcotry of the edited file
+set tags=./tags;
 
 set clipboard=unnamedplus				" yank into system clipboard
 " Only do this part when compiled with support for autocommands.
