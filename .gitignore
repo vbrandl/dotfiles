@@ -1,0 +1,5 @@
+editors/vim/swapfiles/*
+editors/vim/undofiles/*
+
+editors/vim/bundle/*
+!editors/vim/bundle/Vundle.vim
