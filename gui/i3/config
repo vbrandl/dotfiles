@@ -1,0 +1,256 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Monospace 12
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus vim style
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window vim style
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+#Set custom appliation shortcuts
+# Start rofi
+bindsym $mod+d exec rofi -show drun
+
+#set variables for workspaces
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: "
+set $workspace4 "4: "
+set $workspace5 "5: "
+set $workspace6 "6: "
+set $workspace7 "7: "
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10: "
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# Switch to a worspace using mod+<num>
+# and switch back to the previous workspace by pressing mod+<num> again
+workspace_auto_back_and_forth yes
+
+
+
+
+#assign programs to specific windows
+assign [class="Firefox"] $workspace1
+assign [class="Thunderbird"] $workspace7
+assign [class="Pidgin"] $workspace4
+assign [class="Thunar"] $workspace5
+assign [class="libreoffice-startcenter"] $workspace6
+
+#handle automatic floating windows
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [class="Keepassx2"] floating enable
+for_window [class="^Pavucontrol$"] floating enable
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+hide_edge_borders both
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  font pango:ohsnap, awesome, FontAwesome 13
+  # separator_symbol "•"
+  separator_symbol "::"
+  status_command i3blocks
+  #strip_workspace_numbers yes
+  position top
+  colors {
+            background #253941
+            statusline #9e958e
+            separator  #081419
+      # background $transparent
+#
+#       # Numix-Dark 1d2121 414848
+#       #::::::::::::::::::::::: Indicadores ::::::::::::::::::::::::::#
+#       ################################################################
+#       #                   border backgr. text
+              focused_workspace  #08202a #08202a #e7dfd9
+              inactive_workspace #253941 #253941 #9e958e
+              urgent_workspace   #1b1d1f #c6a78a #000000
+          }
+}
+
+client.focused              #1d3037 #1d3037 #ffffff  #ffffff   #1d3037
+client.focused_inactive     #1d2121 #1d2121 #a1a1a1  #484e50   #1d2121
+client.unfocused            #272727 #272727 #fdfdfd  #bfbfbf   #272727  
+client.urgent               #4a4b4c #4a4b4c #fdfdfd  #fbfbfb   #4a4c4b
+client.placeholder          #000000 #0c0c0c #ffffff  #000000   #0c0c0c
+
+client.background           #111111
+
+set $default_gaps_inner 10
+set $default_gaps_outer -4
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+smart_gaps on
+smart_borders on
+
+#custom bindings
+bindsym $mod+shift+x exec i3lock-fancy
+
+# Make screenshot
+bindsym Print exec teiler --quick image area | xclip
+
+# Start teiler (upload tool)
+bindsym $mod+t exec teiler
+
+# shutdown menu
+set $mode_system System:   L :  | S :  | P :  | R :  | E :   
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+
+    # back to normal: Enter or Escape or mod+x again
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+x mode "default"
+}
+bindsym $mod+x mode "$mode_system"
+
+#Set background
+exec_always exec feh --bg-scale /home/me/Bilder/wallpaper/wall.png
+
+exec_always exec compton -f
+
+exec_always exec xbindkeys
+
+exec_once exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always exec /usr/bin/redshift 
+
+exec_always exec conky -c ~/.conkyrc
+# map esc to capslock
+exec_always exec setxkbmap -option caps:escape
+
+#  vim: set filetype=conf ts=4 sw=2 tw=120 et :
