@@ -1,7 +1,7 @@
 # Dotfiles
 
-Dotfile management using [Dotbot](https://github.com/anishathalye/dotbot)
-Structure of this repository is strongly inspired by [vsund](https://github.com/vsund/dotfiles)
+Dotfile management using [Dotbot](https://github.com/anishathalye/dotbot).
+Structure of this repository is strongly inspired by [vsund](https://github.com/vsund/dotfiles).
 
 ## Dependencies
 
@@ -29,7 +29,7 @@ Structure of this repository is strongly inspired by [vsund](https://github.com/
 ## Installation
 
 ```bash
-~$ git clone --recursive https://github.com/vsund/dotfiles .dotfiles
+~$ git clone --recursive https://github.com/vbrandl/dotfiles .dotfiles
 ```
 
 For installing a predefined profile:
