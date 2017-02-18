@@ -40,6 +40,7 @@ Plugin 'junegunn/goyo.vim'				" distraction free writing
 " Rust plugins
 Plugin 'racer-rust/vim-racer'			" rust autocomplete
 Plugin 'rust-lang/rust.vim'				" rust syntax, error checking, etc
+Plugin 'jtdowney/vimux-cargo'			" run cargo in tmux using vimux
 
 " LaTeX
 Plugin 'lervag/vimtex'

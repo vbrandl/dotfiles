@@ -81,6 +81,7 @@ set history=1000			" keep 1000 lines of history
 " set textwidth=120
 set number					" display absolute number of current line
 set relativenumber			" display relative line numbers
+set cursorline				" highlight current line
 " encoding
 set fileencoding=utf-8
 " break at last word instead of last char
@@ -353,5 +354,19 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" vimux mappings
+" Prompt for a command
+map <Leader>vp :VimuxPromptCommand<CR>
+" Prompt for a make command
+map <Leader>vm :VimuxPromptCommand("make ")<CR>
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+" Close runner
+map <Leader>vq :VimuxCloseRunner<CR>
+" Rerun last command
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Stop runninc command
+map <Leader>vs :VimuxInterruptRunner<CR>
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :
