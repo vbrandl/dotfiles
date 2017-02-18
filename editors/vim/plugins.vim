@@ -17,6 +17,7 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'					" make plugin commands repeatable
+Plugin 'tpope/vim-dispatch'					" dispatch into tmux panes
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'mattn/vim-maketable'				" create tables from selection
 Plugin 'dhruvasagar/vim-table-mode'			" handle tables
