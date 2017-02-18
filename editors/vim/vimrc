@@ -366,7 +366,7 @@ map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vq :VimuxCloseRunner<CR>
 " Rerun last command
 map <Leader>vl :VimuxRunLastCommand<CR>
-" Stop runninc command
+" Stop running command
 map <Leader>vs :VimuxInterruptRunner<CR>
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :
