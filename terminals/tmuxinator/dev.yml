@@ -34,10 +34,10 @@ windows:
   - vim:
       layout: cc10,117x66,0,0[117x60,0,0,13,117x5,0,61{58x5,0,61,14,58x5,59,61,15}]
       panes: 
-        - vim
+        - clear;vim
         - clear
         - clear
   - shell:
       layout: 6555,117x66,0,0,16
       panes:
-        -
+        - clear

@@ -35,9 +35,9 @@ windows:
       # layout: ca40,117x66,0,0,3
       layout: main-vertical
       panes:
-        - mutt
+        - mutt;exit
   - offlineimap:
       # layout: cfdf,239x67,0,0,2
       layout: main-vertical
       panes:
-        - offlineimap
+        - offlineimap;exit

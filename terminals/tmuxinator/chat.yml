@@ -35,9 +35,9 @@ windows:
       # layout: ca3d,117x66,0,0,0
       layout: main-vertical
       panes:
-        - weechat
+        - weechat;exit
   - music:
       # layout: cfde,239x67,0,0,1
       layout: main-vertical
       panes:
-        - ncmpcpp
+        - ncmpcpp;exit
