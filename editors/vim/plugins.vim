@@ -12,6 +12,10 @@ Plugin 'joshdick/onedark.vim'
 
 Plugin 'editorconfig/editorconfig-vim'
 
+" Notetaking
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
 Plugin 'w0rp/ale'							" syntax checking
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
