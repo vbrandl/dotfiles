@@ -16,6 +16,12 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
+" reStructuredText
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/InstantRst'					" instant preview
+
+Plugin 'cespare/vim-toml'					" toml highlighting
+
 Plugin 'w0rp/ale'							" syntax checking
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
