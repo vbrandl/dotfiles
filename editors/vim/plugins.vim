@@ -22,7 +22,7 @@ Plugin 'Rykka/InstantRst'					" instant preview
 
 Plugin 'cespare/vim-toml'					" toml highlighting
 
-Plugin 'w0rp/ale'							" syntax checking
+" Plugin 'w0rp/ale'							" syntax checking
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'

@@ -176,10 +176,10 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " moving up and down work as you would expect
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> ^ g^
-nnoremap <silent> $ g$
+nnoremap j gj
+nnoremap k gk
+nnoremap ^ g^
+nnoremap $ g$
 
 " cool resizing
 nnoremap <Left> :vertical resize +2<CR>
@@ -258,6 +258,10 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window = 'bottom,order::ttb' " order top to bottom
+let g:ctrlp_switch_buffer = 0 " open files in new buffer
+let g:ctrlp_working_path_mode = 0 " honor working path changes in vim session
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " use ag to search for files (faster)
 
 " make true colors in tmux work
 " set t_8f=[38;2;%lu;%lu;%lum
@@ -332,6 +336,8 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+let g:rustfmt_autosave = 1 " run rustfmt when saving a file
 
 " close Goyo *and* vim with :q
 function! s:goyo_enter()
