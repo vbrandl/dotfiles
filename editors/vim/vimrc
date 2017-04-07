@@ -27,8 +27,6 @@ syntax on
 colorscheme onedark
 
 " files and backups
-" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=$HOME/.vim/swapfiles//
 " set backupdir=$HOME/.vim/backupdir//
 set undodir=$HOME/.vim/undofiles//
