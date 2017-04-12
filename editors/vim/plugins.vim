@@ -1,3 +1,12 @@
+function! Has_tmux()
+	return $TMUX != ""
+endfunction
+
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -30,7 +39,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'ryanoasis/vim-devicons'								" icons
 Plug 'ctrlpvim/ctrlp.vim'									" fuzzy file finder
 Plug 'neomake/neomake'										" async linting and making
-Plug 'benmills/vimux'										" tmux support
+Plug 'benmills/vimux', Cond(Has_tmux())						" tmux support
 Plug 'sickill/vim-pasta'									" context aware pasting
 Plug 'junegunn/goyo.vim'									" distraction free writing
 
@@ -42,7 +51,9 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }			" python autocomplete
 " Rust plugins
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }				" rust autocomplete
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }				" rust syntax, error checking, etc
-Plug 'jtdowney/vimux-cargo', { 'for': 'rust' }				" run cargo in tmux using vimux
+if Has_tmux()
+	Plug 'jtdowney/vimux-cargo', { 'for': 'rust' }			" run cargo in tmux using vimux
+endif
 
 " LaTeX
 Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
