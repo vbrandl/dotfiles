@@ -376,6 +376,6 @@ map <Leader>vs :VimuxInterruptRunner<CR>
 " vim-notes
 let g:notes_directories = ['~/Dokumente/Notes']
 
-let g:LatexBox_split_type="new" " open TOC in horizontal split
+let g:polyglot_disabled = ['latex']	" disable latex in polyglot to use vimtex
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :

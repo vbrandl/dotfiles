@@ -46,10 +46,9 @@ if !empty($TMUX)
 	Plug 'jtdowney/vimux-cargo', { 'for': 'rust' }			" run cargo in tmux using vimux
 endif
 
-" LaTeX
-Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
-
 Plug 'sheerun/vim-polyglot'									" syntax support for many languages
+
+Plug 'lervag/vimtex'
 
 call plug#end()
 " vim: set filetype=vim ts=4 sw=4 tw=120 noet :
