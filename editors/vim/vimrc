@@ -1,12 +1,9 @@
 " vundle
 " set vIM mode
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+filetype plugin indent on
 
 source ~/.vim/plugins.vim
-
-filetype plugin indent on
 
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
@@ -84,6 +81,8 @@ set cursorline				" highlight current line
 set fileencoding=utf-8
 " break at last word instead of last char
 set linebreak
+
+set autoread	" autoload file changes
 
 " tab control
 set noexpandtab				"  insert tabs
