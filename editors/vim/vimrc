@@ -18,8 +18,10 @@ else
   endif
 endif
 
-" encrypt files using blowfish
-set cryptmethod=blowfish2
+if !has('nvim')
+  " encrypt files using blowfish
+  set cryptmethod=blowfish2
+endif
 
 syntax on
 colorscheme onedark
@@ -56,7 +58,7 @@ endif " has("autocmd")
 "
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
-if has('syntax') && has('eval')
+if has('syntax') && has('eval') && !has('nvim')
   packadd matchit
 endif
 
@@ -143,8 +145,10 @@ set visualbell
 set t_vb=
 set tm=500
 
-" turn on manpages (:Man)
-runtime ftplugin/man.vim
+if !has('nvim')
+  " turn on manpages (:Man)
+  runtime ftplugin/man.vim
+endif
 
 " make comments and HTML attributes italic
 highlight Comment cterm=italic
