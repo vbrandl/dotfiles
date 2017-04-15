@@ -42,7 +42,9 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=120
+
+  autocmd FileType tex setlocal foldtext<
 
   augroup END
 
@@ -76,7 +78,8 @@ set nolazyredraw
 set backspace=indent,eol,start
 set ruler					" always show curser position
 set history=1000			" keep 1000 lines of history
-" set textwidth=120
+set textwidth=120
+set colorcolumn=+1
 set number					" display absolute number of current line
 set relativenumber			" display relative line numbers
 set cursorline				" highlight current line
@@ -381,5 +384,24 @@ map <Leader>vs :VimuxInterruptRunner<CR>
 let g:notes_directories = ['~/Dokumente/Notes']
 
 let g:polyglot_disabled = ['latex']	" disable latex in polyglot to use vimtex
+
+" you complete me
+let g:ycm_rust_src_path = '/usr/src/rust/src'
+let g:ycm_python_binary_path = 'python'
+
+" " javacomplete2
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" " enable smart (trying to guess import option) inserting class imports with F4
+" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" " enable smart (trying to guess import option) inserting class imports with F4
+" nmap <F5> <Plug>(JavaComplete-Imports-Add)
+" imap <F5> <Plug>(JavaComplete-Imports-Add)
+" " add all missing imports with F6
+" nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+" imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+" " add all missing imports with F6
+" nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :

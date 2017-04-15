@@ -28,14 +28,15 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'mattn/gist-vim' | Plug 'mattn/webapi-vim'				" create gist from within vim
 Plug 'Raimondi/delimitMate'									" autoclose quotes and brackets
 Plug 'tpope/vim-fugitive'									" awesome git plugin
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } 
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } 
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'ryanoasis/vim-devicons'								" icons
 Plug 'ctrlpvim/ctrlp.vim'									" fuzzy file finder
 Plug 'neomake/neomake'										" async linting and making
 Plug 'benmills/vimux', Cond(!empty($TMUX))						" tmux support
 Plug 'sickill/vim-pasta'									" context aware pasting
 Plug 'junegunn/goyo.vim'									" distraction free writing
+Plug 'bronson/vim-trailing-whitespace'						" highlight unwanted whitespaces
 
 " Python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }			" python autocomplete
@@ -47,6 +48,16 @@ if !empty($TMUX)
 endif
 
 Plug 'sheerun/vim-polyglot'									" syntax support for many languages
+
+function! BuildYCM(info)
+	if a:info.status = 'installed' || a:info.force
+		!./install.py --clang-completer --racer-completer
+	endif
+endfunction
+
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+" Plug 'artur-shaik/vim-javacomplete2'
 
 Plug 'lervag/vimtex'
 
