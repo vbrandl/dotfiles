@@ -38,6 +38,9 @@ Plug 'sickill/vim-pasta'									" context aware pasting
 Plug 'junegunn/goyo.vim'									" distraction free writing
 Plug 'bronson/vim-trailing-whitespace'						" highlight unwanted whitespaces
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }			" python autocomplete
 
@@ -55,7 +58,13 @@ function! BuildYCM(info)
 	endif
 endfunction
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
+
+if has('vim')
+	Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+endif
 
 " Plug 'artur-shaik/vim-javacomplete2'
 

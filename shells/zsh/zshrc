@@ -8,6 +8,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # autosuggestions based on the history
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle git
+antigen bundle gitignore
 antigen bundle tmux
 antigen bundle tmuxinator
 # cargo autocomplete
@@ -43,7 +44,7 @@ export JAVA_OPTS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export EDITOR=/usr/bin/vim
 # map vi to vim
 alias vi=$EDITOR
- 
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -77,11 +78,20 @@ source /etc/profile.d/vte.sh
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode - bold, magenta
 export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode    
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode - yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
 
 unsetopt autopushd
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$HOME/.rvm/bin:$PATH"
+# export PATH=/home/me/.gem/ruby/2.4.0/bin:$PATH
+
+# Linuxbrew
+# export PATH="/home/me/.linuxbrew/bin:$PATH"
+# export MANPATH="/home/me/.linuxbrew/share/man:$MANPATH"
+# export INFOPATH="/home/me/.linuxbrew/share/info:$INFOPATH"
+fpath=(~/.zsh/completions $fpath)
 #  vim: set filetype=zsh ts=4 sw=4 tw=0 et :

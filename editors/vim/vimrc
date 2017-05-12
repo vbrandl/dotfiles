@@ -386,7 +386,7 @@ let g:notes_directories = ['~/Dokumente/Notes']
 let g:polyglot_disabled = ['latex']	" disable latex in polyglot to use vimtex
 
 " you complete me
-let g:ycm_rust_src_path = '/usr/src/rust/src'
+let g:ycm_rust_src_path = '~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:ycm_python_binary_path = 'python'
 
 " " javacomplete2
@@ -403,5 +403,9 @@ let g:ycm_python_binary_path = 'python'
 " " add all missing imports with F6
 " nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 " imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :
