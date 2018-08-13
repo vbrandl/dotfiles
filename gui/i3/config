@@ -201,19 +201,19 @@ bar {
 
 client.focused              #1d3037 #1d3037 #ffffff  #ffffff   #1d3037
 client.focused_inactive     #1d2121 #1d2121 #a1a1a1  #484e50   #1d2121
-client.unfocused            #272727 #272727 #fdfdfd  #bfbfbf   #272727  
+client.unfocused            #272727 #272727 #fdfdfd  #bfbfbf   #272727
 client.urgent               #4a4b4c #4a4b4c #fdfdfd  #fbfbfb   #4a4c4b
 client.placeholder          #000000 #0c0c0c #ffffff  #000000   #0c0c0c
 
 client.background           #111111
 
-set $default_gaps_inner 10
-set $default_gaps_outer -4
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
+# set $default_gaps_inner 10
+# set $default_gaps_outer -4
+# gaps inner $default_gaps_inner
+# gaps outer $default_gaps_outer
 
-smart_gaps on
-smart_borders on
+# smart_gaps on
+# smart_borders on
 
 #custom bindings
 bindsym $mod+shift+x exec i3lock-fancy
@@ -225,7 +225,7 @@ bindsym Print exec teiler --quick image area | xclip
 bindsym $mod+t exec teiler
 
 # shutdown menu
-set $mode_system System:   L :  | S :  | P :  | R :  | E :   
+set $mode_system System:   L :  | S :  | P :  | R :  | E : 
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3lock-fancy, mode "default"
     bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default
@@ -240,19 +240,19 @@ mode "$mode_system" {
 }
 bindsym $mod+x mode "$mode_system"
 
+exec_always compton -f
+
+exec_always xbindkeys
+
+# exec_once exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec dunst
+exec /home/me/.screenlayout/dual.sh
+
 #Set background
-exec_always exec feh --bg-scale /home/me/Bilder/wallpaper/wall.png
+exec_always feh --bg-scale /home/me/Bilder/wallpaper/wall.png
 
-exec_always exec compton -f
-
-exec_always exec xbindkeys
-
-exec_once exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_once exec /usr/bin/redshift 
-exec_once exec dunst
-
-exec_always exec conky -c ~/.conkyrc
+exec_always conky -c ~/.conkyrc
 # map esc to capslock
-exec_always exec setxkbmap -option caps:escape
+exec_always setxkbmap -option caps:escape
 
 #  vim: set filetype=conf ts=4 sw=2 tw=120 et :
