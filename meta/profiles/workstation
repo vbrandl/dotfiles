@@ -3,8 +3,8 @@ dunst
 gdb
 git
 gnupg
-i3blocks
 i3
+i3blocks
 ncmpcpp
 profile
 qt
@@ -12,8 +12,9 @@ rofi
 teiler
 terminal-colors
 termite
-tmuxinator
 tmux
+tmuxinator
+urlview
 vim
 x11
 xbindkeys
