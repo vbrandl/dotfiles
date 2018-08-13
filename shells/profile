@@ -6,3 +6,7 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     export QT_QPA_PLATFORMTHEME='gtk2'
 fi
 #  vim: set filetype=zsh ts=4 sw=4 tw=120 et :
+
+export PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.node/bin:$PATH"
+NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
