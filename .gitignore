@@ -4,5 +4,7 @@ editors/vim/plugged
 editors/vim/spell
 editors/vim/view
 
+tools/mediaplayer/ncmpcpp/error.log
+
 editors/vim/bundle/*
 !editors/vim/bundle/Vundle.vim
