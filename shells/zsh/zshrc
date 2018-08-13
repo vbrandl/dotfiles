@@ -28,13 +28,12 @@ antigen bundle ssh-agent
 
 antigen bundle https://github.com/bobthecow/git-flow-completion
 
+antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
+# antigen theme https://github.com/agnoster/agnoster-zsh-theme.git agnoster
+
 antigen apply
 
-export PATH=~/.rakudobrew/bin:~/.gem/ruby/2.3.0/bin:$PATH
-eval "$(/home/me/.rakudobrew/bin/rakudobrew init -)"
-
-# antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
-antigen theme https://github.com/agnoster/agnoster-zsh-theme.git agnoster
+export PATH=~/bin:~/.gem/ruby/2.3.0/bin:$PATH
 
 source $HOME/.cargo/env
 
@@ -73,6 +72,11 @@ alias prm=". $HOME/tools/prm/prm.sh"
 # multiple tabs in termite
 source /etc/profile.d/vte.sh
 
+# load nix
+. /home/me/.nix-profile/etc/profile.d/nix.sh
+
+. ~/.drone/drone.vbrandl.net
+
 # copied from http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
 # maybe improve later
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
@@ -87,7 +91,8 @@ unsetopt autopushd
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
-# export PATH=/home/me/.gem/ruby/2.4.0/bin:$PATH
+export PATH=/home/me/.gem/ruby/2.5.0/bin:$PATH
+export PATH=$PATH:"$HOME/.yarn/bin"
 
 # Linuxbrew
 # export PATH="/home/me/.linuxbrew/bin:$PATH"
@@ -95,3 +100,6 @@ export PATH="$HOME/.rvm/bin:$PATH"
 # export INFOPATH="/home/me/.linuxbrew/share/info:$INFOPATH"
 fpath=(~/.zsh/completions $fpath)
 #  vim: set filetype=zsh ts=4 sw=4 tw=0 et :
+
+# added by travis gem
+[ -f /home/me/.travis/travis.sh ] && source /home/me/.travis/travis.sh
