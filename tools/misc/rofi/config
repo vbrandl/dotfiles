@@ -5,7 +5,7 @@ rofi.color-normal: argb:d2424655, argb:d2838c9d, argb:d2424655, argb:d2424655, a
 rofi.color-window: argb:d2424655, argb:d2424655, argb:d2525863
 
 rofi.fullscreen: true
-rofi.padding: 400
+rofi.padding: 200
 rofi.line-padding: 15
 rofi.line-margin: 0
 
