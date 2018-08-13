@@ -2,5 +2,5 @@
     ~/.tmux.conf: terminals/tmux/tmux.conf
 
 - shell:
-    - [tmux source-file ~/.tmux.conf, Sourcing new tmux configuration]
+    - [tmux source-file ~/.tmux.conf || true, Sourcing new tmux configuration]
 #  vim: set filetype=yaml ts=4 sw=4 tw=0 et :
