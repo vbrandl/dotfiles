@@ -3,6 +3,7 @@ editors/vim/undofiles/*
 editors/vim/plugged
 editors/vim/spell
 editors/vim/view
+editors/vim/init.vim
 
 tools/mediaplayer/ncmpcpp/error.log
 
