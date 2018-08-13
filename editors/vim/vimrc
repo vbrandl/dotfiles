@@ -6,9 +6,6 @@ source ~/.vim/plugins.vim
 
 filetype plugin indent on
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
-
 if has("vms")
   set nobackup
 else
@@ -21,6 +18,9 @@ endif
 if !has('nvim')
   " encrypt files using blowfish
   set cryptmethod=blowfish2
+
+  " Get the defaults that most users want.
+  source $VIMRUNTIME/defaults.vim
 endif
 
 syntax on
@@ -34,6 +34,7 @@ set undodir=$HOME/.vim/undofiles//
 set tags=./tags;
 
 set clipboard=unnamedplus				" yank into system clipboard
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -84,7 +85,7 @@ set number					" display absolute number of current line
 set relativenumber			" display relative line numbers
 set cursorline				" highlight current line
 " encoding
-set fileencoding=utf-8
+set fileencoding=UTF-8
 " break at last word instead of last char
 set linebreak
 
@@ -407,5 +408,8 @@ let g:ycm_python_binary_path = 'python'
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
 endif
+
+let g:licenses_copyright_holders_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
+let g:licenses_authors_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
 
 " vim: set filetype=vim ts=8 sw=2 tw=120 noet :
