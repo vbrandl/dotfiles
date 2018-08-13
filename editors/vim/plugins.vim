@@ -30,8 +30,8 @@ Plug 'Raimondi/delimitMate'									" autoclose quotes and brackets
 Plug 'tpope/vim-fugitive'									" awesome git plugin
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'ryanoasis/vim-devicons'								" icons
 Plug 'ctrlpvim/ctrlp.vim'									" fuzzy file finder
+Plug 'ryanoasis/vim-devicons'								" icons
 Plug 'neomake/neomake'										" async linting and making
 Plug 'benmills/vimux', Cond(!empty($TMUX))						" tmux support
 Plug 'sickill/vim-pasta'									" context aware pasting
@@ -40,6 +40,7 @@ Plug 'bronson/vim-trailing-whitespace'						" highlight unwanted whitespaces
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'antoyo/vim-licenses'
 
 " Python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }			" python autocomplete
