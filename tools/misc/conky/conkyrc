@@ -48,5 +48,3 @@ ${voffset 5}${color2}${font Bitstream Vera Sans:size=8}${alignr}kernel: ${color}
 ${voffset 5}${color2}MPD$alignr${if_mpd_playing} ${color}${mpd_artist} ${mpd_title} 
 ${color}${mpd_bar 3 2}
 ]]
-
-/* vim: set filetype=conkyrc ts=4 sw=4 tw=120 noet :*/
