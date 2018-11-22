@@ -33,7 +33,7 @@ antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
 
 antigen apply
 
-export PATH=~/bin:~/.gem/ruby/2.3.0/bin:$PATH
+export PATH=~/bin:~/.gem/ruby/2.5.0/bin:$PATH
 
 source $HOME/.cargo/env
 
@@ -91,8 +91,11 @@ unsetopt autopushd
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
-export PATH=/home/me/.gem/ruby/2.5.0/bin:$PATH
-export PATH=$PATH:"$HOME/.yarn/bin"
+export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 # Linuxbrew
 # export PATH="/home/me/.linuxbrew/bin:$PATH"
