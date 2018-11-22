@@ -1,0 +1,431 @@
+" set vim mode
+set nocompatible
+
+source ~/.vim/plugins.vim
+
+filetype plugin indent on
+
+if has("vms")
+  set nobackup
+else
+  " set backup
+  if has('persistent_undo')
+    set undofile
+  endif
+endif
+
+"if !has('nvim')
+"  " encrypt files using blowfish
+"  set cryptmethod=blowfish2
+
+"  " Get the defaults that most users want.
+"endif
+source $VIMRUNTIME/defaults.vim
+
+syntax on
+colorscheme onedark
+" underline spelling
+hi clear SpellBad
+hi SpellBad cterm=undercurl
+
+" files and backups
+set directory=$HOME/.vim/swapfiles//
+" set backupdir=$HOME/.vim/backupdir//
+set undodir=$HOME/.vim/undofiles//
+
+" yank into system clipboard
+set clipboard=unnamedplus
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  autocmd FileType text setlocal foldtext<
+
+  augroup END
+
+  " remember cursor position
+  autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") |
+  	\	exe "normal! g`\"" |
+  	\ endif
+
+endif " has("autocmd")
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+"if has('syntax') && has('eval') && !has('nvim')
+packadd matchit
+"endif
+
+" always set autoindenting on
+set autoindent
+" smart indent; stop indent when closing brackets etc
+set smartindent
+
+" searching
+" highlight search result
+set hlsearch
+" ignore case
+set ignorecase
+" case-sensitive if expression contains capital letters
+set smartcase
+" incremental search
+set incsearch
+"set nolazyredraw
+
+" delete whitespace, line break and char using <BS>
+set backspace=indent,eol,start
+" always show curser position
+set ruler
+" keep 1000 lines of history
+set history=1000
+set textwidth=120
+set colorcolumn=+1
+" display absolute number of current line
+set number
+" display relative line numbers
+set relativenumber
+" highlight current line
+set cursorline
+" encoding
+set fileencoding=utf-8
+" break at last word instead of last char
+set linebreak
+
+" autoload file changes
+set autoread
+
+" tab control
+" insert spaces
+set expandtab
+set smarttab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+"set completeopt+=longest
+
+" invisible characters
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
+" code folding settings
+" fold based on syntax
+set foldmethod=indent
+" don't fold by default
+set nofoldenable
+set foldlevel=1
+
+" smoother redrawing
+set ttyfast
+" diff with vertical split
+set diffopt+=vertical
+" show the status line all the time
+set laststatus=2
+" keep 5 lines on the screen when scrolling
+set scrolloff=5
+" enhanced command line completion
+set wildmenu
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+"set hidden					" current buffer can be put into background
+" show incomplete commands
+set showcmd
+"set noshowmode				" don't show which mode disabled for PowerLine
+" complete files like a shell
+set wildmode=list:longest
+set shell=$SHELL
+" command bar height
+set cmdheight=1
+" set terminal title
+set title
+
+" show matching braces
+set showmatch
+" how many tenths of a second to blink
+set mat=2
+" set spell langs
+set spelllang=de,en
+
+"" user commands
+
+"" create tags file
+"" ^]	jump to tag under cursor
+"" g^]	for ambiguous tags
+"" ^t	jump back in the tag stack
+"command! MakeTags !ctags -R .
+
+" error bells
+set noerrorbells
+set novisualbell
+set timeoutlen=500
+
+if !has('nvim')
+  " turn on manpages (:Man)
+  runtime ftplugin/man.vim
+endif
+
+" make comments and HTML attributes italic
+highlight Comment cterm=italic
+highlight htmlArg cterm=italic
+
+" set a map leader for more key combos
+let mapleader = ','
+
+" clear highlighted search
+noremap <space> :nohlsearch<cr>
+
+" enable . command in visual mode
+vnoremap . :normal .<cr>
+
+" move between windows using CTRL+hjll
+map <silent> <C-h> :call functions#WinMove('h')<cr>
+map <silent> <C-j> :call functions#WinMove('j')<cr>
+map <silent> <C-k> :call functions#WinMove('k')<cr>
+map <silent> <C-l> :call functions#WinMove('l')<cr>
+
+" count wraped lines as one line when doing relative jumps
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+"" moving up and down work as you would expect
+"nnoremap j gj
+"nnoremap k gk
+"nnoremap ^ g^
+"nnoremap $ g$
+
+"" cool resizing
+"nnoremap <Left> :vertical resize +2<CR>
+"nnoremap <Right> :vertical resize -2<CR>
+"nnoremap <Up> :resize -2<CR>
+"nnoremap <Down> :resize +2<CR><Paste>
+
+"" search for word under the cursor
+nnoremap <leader>/ "fyiw :/<c-r>f<cr>
+
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" make the highlighting of tabs and other non-text less annoying
+highlight SpecialKey ctermbg=none ctermfg=8
+highlight NonText ctermbg=none ctermfg=8
+
+"" Section AutoGroups {{{
+"" file type specific settings
+augroup configgroup
+    autocmd!
+
+"    " automatically resize panes on resize
+"    autocmd VimResized * exe 'normal! \<c-w>='
+    autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
+    autocmd BufWritePost .vimrc.local source %
+    " save all files on focus lost, ignoring warnings about untitled buffers
+    autocmd FocusLost * silent! wa
+
+    " make quickfix windows take all the lower section of the screen
+    " when there are multiple windows open
+    autocmd FileType qf wincmd J
+
+"    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"    let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+
+"    " autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
+
+"    autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+
+"    autocmd! BufWritePost * Neomake
+augroup END
+
+"" }}}
+
+" paste without indention
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+"let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+"let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+"" ctrlp
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+"let g:ctrlp_match_window = 'bottom,order::ttb' " order top to bottom
+"let g:ctrlp_switch_buffer = 0 " open files in new buffer
+"let g:ctrlp_working_path_mode = 0 " honor working path changes in vim session
+"let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " use ag to search for files (faster)
+
+" true color
+set termguicolors
+" make true colors in tmux work
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+
+" airline options
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_theme='onedark'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline#extensions#tabline#enabled = 1 " enable airline tabline
+let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs are being used (more than 1 tab open)
+let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
+let g:airline#extensions#tabline#show_splits = 0
+
+let g:onedark_terminal_italics = 1 " italics for onedark
+
+"" Toggle NERDTree
+"nmap <silent> <leader>k :NERDTreeToggle<cr>
+"" expand to the path of the file in the current buffer
+"nmap <silent> <leader>y :NERDTreeFind<cr>
+"" autocmd BufWinEnter * NERDTreeMirror
+
+"let NERDTreeShowHidden=1
+"let NERDTreeDirArrowExpandable = '▷'
+"let NERDTreeDirArrowCollapsible = '▼'
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set filetype=%s ts=%d sw=%d tw=%d %set :",
+        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+"" delimate config
+"let delimitMate_expand_cr = 1
+
+" set textwidth for mails
+autocmd FileType mail setlocal textwidth=72
+
+"" netrw settings
+"let g:netrw_banner	= 0	" disable banner
+"let g:netrw_browse_split= 4	" open in prior window
+"let g:netrw_altv	= 1	" open splits to the right
+"let g:netrw_liststyle	= 3	" treeview
+"let g:netrw_list_hide	= netrw_gitignore#Hide()
+"let g:netrw_list_hide	.= ',\(^\|\s\s\)\zs\.\S\+'
+
+"" racer config (rust autocomplete)
+"let g:racer_cmd = "/home/me/.cargo/bin/racer"
+"let g:racer_experimental_completer = 1
+"au FileType rust nmap gd <Plug>(rust-def)
+"au FileType rust nmap gs <Plug>(rust-def-split)
+"au FileType rust nmap gx <Plug>(rust-def-vertical)
+"au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+"let g:rustfmt_autosave = 1 " run rustfmt when saving a file
+
+"" close Goyo *and* vim with :q
+"function! s:goyo_enter()
+"  let b:quitting = 0
+"  let b:quitting_bang = 0
+"  autocmd QuitPre <buffer> let b:quitting = 1
+"  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+"endfunction
+
+"function! s:goyo_leave()
+"  " Quit Vim if this is the only remaining buffer
+"  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+"    if b:quitting_bang
+"      qa!
+"    else
+"      qa
+"    endif
+"  endif
+"endfunction
+
+"autocmd! User GoyoEnter call <SID>goyo_enter()
+"autocmd! User GoyoLeave call <SID>goyo_leave()
+
+"" vimux mappings
+"" Prompt for a command
+"map <Leader>vp :VimuxPromptCommand<CR>
+"" Prompt for a make command
+"map <Leader>vm :VimuxPromptCommand("make ")<CR>
+"" Inspect runner pane
+"map <Leader>vi :VimuxInspectRunner<CR>
+"" Close runner
+"map <Leader>vq :VimuxCloseRunner<CR>
+"" Rerun last command
+"map <Leader>vv :VimuxRunLastCommand<CR>
+"" Stop running command
+"map <Leader>vs :VimuxInterruptRunner<CR>
+
+"" vim-notes
+"let g:notes_directories = ['~/Dokumente/Notes']
+
+"let g:polyglot_disabled = ['latex']	" disable latex in polyglot to use vimtex
+
+"" you complete me
+"let g:ycm_rust_src_path = '~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+"let g:ycm_python_binary_path = 'python'
+
+"" " javacomplete2
+"" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"" " enable smart (trying to guess import option) inserting class imports with F4
+"" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"" imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"" " enable smart (trying to guess import option) inserting class imports with F4
+"" nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"" imap <F5> <Plug>(JavaComplete-Imports-Add)
+"" " add all missing imports with F6
+"" nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"" imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"" " add all missing imports with F6
+"" nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"" imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+"if has('nvim')
+"  let g:deoplete#enable_at_startup = 1
+"  let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+"  let g:deoplete#sources#rust#rust_source_path='$(rustc --print sysroot)/lib/rustlib/src/rust/src'
+"endif
+
+"let g:licenses_copyright_holders_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
+"let g:licenses_authors_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
+
+
+"" Vimwiki
+"let g:vimwiki_list = [{'path': '~/Dokumente/notes',
+"		      \ 'syntax': 'markdown',
+"		      \ 'ext': '.md'}]
+
+"" vim: set filetype=vim ts=8 sw=2 tw=120 noet :
