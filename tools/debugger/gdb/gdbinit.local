@@ -1,2 +1,2 @@
 source /usr/share/peda/peda.py
-/* vim: set filetype=gdb ts=4 sw=4 tw=120 noet :*/
+# /* vim: set filetype=gdb ts=4 sw=4 tw=120 noet :*/

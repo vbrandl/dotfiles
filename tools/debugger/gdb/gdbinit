@@ -3997,4 +3997,4 @@ end
 #   Version 2
 #     Radix bugfix by elaine
 source /usr/share/peda/peda.py
-/* vim: set filetype=gdb ts=8 sw=4 tw=120 et :*/
+# /* vim: set filetype=gdb ts=8 sw=4 tw=120 et :*/
