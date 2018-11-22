@@ -1,7 +1,8 @@
 [user]
 	email = vbrandl@riseup.net
 	name = Valentin Brandl
-	signingkey = 0x7FB009175885FC76
+	; signingkey = 0x7FB009175885FC76
+	signingkey = 0x30D341DD34118D7D
 
 [commit]
 	gpgsign = true
