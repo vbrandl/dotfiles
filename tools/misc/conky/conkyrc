@@ -46,5 +46,5 @@ ${alignr}${color2}${font Bitstream Vera Sans:size=8}uptime: ${color}${uptime_sho
 ${voffset 5}${color2}${font Bitstream Vera Sans:size=8}${alignr}kernel: ${color}${kernel}
 
 ${voffset 5}${color2}MPD$alignr${if_mpd_playing} ${color}${mpd_artist} ${mpd_title} 
-${color}${mpd_bar 3 2}
+${color}${mpd_bar 3 2}${endif}
 ]]
