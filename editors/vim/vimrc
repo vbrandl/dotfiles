@@ -1,5 +1,4 @@
-" vundle
-" set vIM mode
+" set vim mode
 set nocompatible
 
 source ~/.vim/plugins.vim
@@ -15,41 +14,53 @@ else
   endif
 endif
 
-if !has('nvim')
-  " encrypt files using blowfish
-  set cryptmethod=blowfish2
+syntax enable
+" set transparent background
+" let g:solarized_termtrans=1
+" use italics
+let g:solarized_term_italics=1
+" filetype-specific syntax highlighting groups
+let g:solarized_extra_hi_groups=1
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+set background=dark
+colorscheme solarized8
+" underline spelling
+highlight clear SpellBad
+highlight SpellBad cterm=undercurl
 
-  " Get the defaults that most users want.
-  source $VIMRUNTIME/defaults.vim
-endif
+" true color
+set termguicolors
+" make true colors work in tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-syntax on
-colorscheme onedark
+" make comments and HTML attributes italic
+"highlight Comment cterm=italic
+"highlight htmlArg cterm=italic
+
+"highlight Normal ctermbg=NONE guibg=NONE
+"highlight NonText ctermbg=NONE guibg=NONE
 
 " files and backups
 set directory=$HOME/.vim/swapfiles//
 " set backupdir=$HOME/.vim/backupdir//
 set undodir=$HOME/.vim/undofiles//
-" search tags file downwards from the direcotry of the edited file
-set tags=./tags;
 
-set clipboard=unnamedplus				" yank into system clipboard
+" yank into system clipboard
+set clipboard=unnamedplus
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=120
-
-  autocmd FileType tex setlocal foldtext<
+  autocmd FileType text setlocal foldtext<
 
   augroup END
 
-  " remember curser position
+  " remember cursor position
   autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
   	\	exe "normal! g`\"" |
@@ -57,48 +68,60 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-if has('syntax') && has('eval') && !has('nvim')
-  packadd matchit
+if !has('nvim')
+    " Get the defaults that most users want.
+    source $VIMRUNTIME/defaults.vim
+    " The matchit plugin makes the % command work better
+    packadd matchit
 endif
 
-set autoindent				" always set autoindenting on
-set smartindent				" smart indent; stop indent when closing brackets etc
+" always set autoindenting on
+set autoindent
+" smart indent; stop indent when closing brackets etc
+set smartindent
 
 " searching
-set hlsearch				" highlight search result
-set ignorecase				" ignore case
-set smartcase				" case-sensitive if expression contains capital letters
-set incsearch				" incremental search
+" highlight search result
+set hlsearch
+" ignore case
+set ignorecase
+" case-sensitive if expression contains capital letters
+set smartcase
+" incremental search
+set incsearch
 set nolazyredraw
 
 " delete whitespace, line break and char using <BS>
 set backspace=indent,eol,start
-set ruler					" always show curser position
-set history=1000			" keep 1000 lines of history
+" always show curser position
+set ruler
+" keep 1000 lines of history
+set history=1000
 set textwidth=120
 set colorcolumn=+1
-set number					" display absolute number of current line
-set relativenumber			" display relative line numbers
-set cursorline				" highlight current line
+" display absolute number of current line
+set number
+" display relative line numbers
+set relativenumber
+" highlight current line
+set cursorline
 " encoding
-set fileencoding=UTF-8
+set fileencoding=utf-8
 " break at last word instead of last char
 set linebreak
 
-set autoread	" autoload file changes
+" autoload file changes
+set autoread
 
 " tab control
-set noexpandtab				"  insert tabs
+" insert spaces
+set expandtab
 set smarttab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
-set completeopt+=longest
+"set completeopt+=longest
 
 " invisible characters
 set list
@@ -106,68 +129,72 @@ set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 " code folding settings
-set foldmethod=syntax		" fold based on indent
-set foldnestmax=10			" deepest fold is 10 levels
-set nofoldenable			" don't fold by default
+" fold based on syntax
+set foldmethod=indent
+" don't fold by default
+set nofoldenable
 set foldlevel=1
 
-set ttyfast					" faster redrawing
+" smoother redrawing
+set ttyfast
+" diff with vertical split
 set diffopt+=vertical
-set laststatus=2			" show the status line all the time
-set so=7					" set 7 lines to the cursors - when moving vertical
-set wildmenu				" enhanced command line completion
+" show the status line all the time
+set laststatus=2
+" keep 5 lines on the screen when scrolling
+set scrolloff=5
+" enhanced command line completion
+set wildmenu
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
-set hidden					" current buffer can be put into background
-set showcmd					" show incomplete commands
-set noshowmode				" don't show which mode disabled for PowerLine
-set wildmode=list:longest	" complete files like a shell
-set scrolloff=3				" lines of text around cursor
+" allow switching away from unsaved buffers
+set hidden
+" show incomplete commands
+set showcmd
+"set noshowmode				" don't show which mode disabled for PowerLine
+" complete files like a shell
+set wildmode=list:longest
 set shell=$SHELL
-set cmdheight=1				" command bar height
-set title					" set terminal title
+" command bar height
+set cmdheight=1
+" set terminal title
+set title
+set shortmess+=TOFwat
 
-set magic					" set magic on, for regex
+" show matching braces
+set showmatch
+" how many tenths of a second to blink
+set mat=2
+" set spell langs
+set spelllang=de,en
 
-set showmatch				" show matching braces
-set mat=2					" how many tenths of a second to blink
-set complete +=kspell		" autocomplete from the dictionary when spellchecking is enabled
-set spelllang=de,en				" set spell langs
+"" user commands
 
-" user commands
-
-" create tags file
-" ^]	jump to tag under cursor
-" g^]	for ambiguous tags
-" ^t	jump back in the tag stack
-command! MakeTags !ctags -R .
+"" create tags file
+"" ^]	jump to tag under cursor
+"" g^]	for ambiguous tags
+"" ^t	jump back in the tag stack
+"command! MakeTags !ctags -R .
 
 " error bells
-set noerrorbells
+set errorbells
 set visualbell
-set t_vb=
-set tm=500
+set timeoutlen=500
 
-if !has('nvim')
-  " turn on manpages (:Man)
-  runtime ftplugin/man.vim
-endif
-
-" make comments and HTML attributes italic
-highlight Comment cterm=italic
-highlight htmlArg cterm=italic
+" turn on manpages (:Man)
+runtime ftplugin/man.vim
 
 " set a map leader for more key combos
-let mapleader = ','
+let mapleader=','
 
 " clear highlighted search
-" nnoremap <space> :set hlsearch! hlsearch?<cr>
 noremap <space> :nohlsearch<cr>
 
 " enable . command in visual mode
 vnoremap . :normal .<cr>
 
+" move between windows using CTRL+hjll
 map <silent> <C-h> :call functions#WinMove('h')<cr>
 map <silent> <C-j> :call functions#WinMove('j')<cr>
 map <silent> <C-k> :call functions#WinMove('k')<cr>
@@ -180,25 +207,21 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+"
+"" moving up and down work as you would expect
+"nnoremap j gj
+"nnoremap k gk
+"nnoremap ^ g^
+"nnoremap $ g$
 
-" moving up and down work as you would expect
-nnoremap j gj
-nnoremap k gk
-nnoremap ^ g^
-nnoremap $ g$
-
-" cool resizing
-nnoremap <Left> :vertical resize +2<CR>
-nnoremap <Right> :vertical resize -2<CR>
-nnoremap <Up> :resize -2<CR>
-nnoremap <Down> :resize +2<CR><Paste>
+"" cool resizing
+"nnoremap <Left> :vertical resize +2<CR>
+"nnoremap <Right> :vertical resize -2<CR>
+"nnoremap <Up> :resize -2<CR>
+"nnoremap <Down> :resize +2<CR><Paste>
 
 " search for word under the cursor
 nnoremap <leader>/ "fyiw :/<c-r>f<cr>
-
-" helpers for dealing with other people's code
-nmap \t :set ts=4 sts=4 sw=4 noet<cr>
-nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -207,8 +230,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 highlight SpecialKey ctermbg=none ctermfg=8
 highlight NonText ctermbg=none ctermfg=8
 
-" Section AutoGroups {{{
-" file type specific settings
+"" Section AutoGroups {{{
+"" file type specific settings
 augroup configgroup
     autocmd!
 
@@ -223,21 +246,16 @@ augroup configgroup
     " when there are multiple windows open
     autocmd FileType qf wincmd J
 
-    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-    let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+"    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"    let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
 
-    " autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
+"    " autocmd! BufEnter * call functions#ApplyLocalSettings(expand('<afile>:p:h'))
 
-    autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
+"    autocmd BufNewFile,BufRead,BufWrite *.md syntax match Comment /\%^---\_.\{-}---$/
 
     autocmd! BufWritePost * Neomake
 augroup END
-
 " }}}
-
-" detect filetypes, use filetype plugins and autoindent
-filetype plugin indent on
-
 
 " paste without indention
 function! WrapForTmux(s)
@@ -251,8 +269,8 @@ function! WrapForTmux(s)
   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
 endfunction
 
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+"let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+"let &t_EI .= WrapForTmux("\<Esc>[?2004l")
 
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
@@ -263,153 +281,69 @@ endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_window = 'bottom,order::ttb' " order top to bottom
-let g:ctrlp_switch_buffer = 0 " open files in new buffer
-let g:ctrlp_working_path_mode = 0 " honor working path changes in vim session
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " use ag to search for files (faster)
-
-" true color
-set termguicolors
-" make true colors in tmux work
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-
-" airline options
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+" order top to bottom
+let g:ctrlp_match_window='bottom,order::ttb'
+" open files in new buffer
+let g:ctrlp_switch_buffer=0
+" use ripgrep if available
+if executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command='rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching=0
 endif
-let g:airline_powerline_fonts=1
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_theme='onedark'
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline#extensions#tabline#enabled = 1 " enable airline tabline
-let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs are being used (more than 1 tab open)
-let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
-let g:airline#extensions#tabline#show_splits = 0
-
-let g:onedark_terminal_italics = 1 " italics for onedark
-
-" Toggle NERDTree
-nmap <silent> <leader>k :NERDTreeToggle<cr>
-" expand to the path of the file in the current buffer
-nmap <silent> <leader>y :NERDTreeFind<cr>
-" autocmd BufWinEnter * NERDTreeMirror
-
-let NERDTreeShowHidden=1
-let NERDTreeDirArrowExpandable = '▷'
-let NERDTreeDirArrowCollapsible = '▼'
+" use ag if available
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching=0
+endif
 
 " Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX files.
 function! AppendModeline()
-  let l:modeline = printf(" vim: set filetype=%s ts=%d sw=%d tw=%d %set :",
-        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
+    let l:modeline = printf(" vim: set filetype=%s ts=%d sw=%d tw=%d %set :",
+                \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+    let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+    call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
-" delimate config
-let delimitMate_expand_cr = 1
-
 " set textwidth for mails
-" au BufRead /tmp/mutt-* set tw=72
 autocmd FileType mail setlocal textwidth=72
 
 " netrw settings
-" (vim builtin filebrowser which ist also just a plugin bundled with vim)
-let g:netrw_banner	= 0	" disable banner
-let g:netrw_browse_split= 4	" open in prior window
-let g:netrw_altv	= 1	" open splits to the right
-let g:netrw_liststyle	= 3	" treeview
-let g:netrw_list_hide	= netrw_gitignore#Hide()
-let g:netrw_list_hide	.= ',\(^\|\s\s\)\zs\.\S\+'
+" disable banner
+let g:netrw_banner=0
+" open in prior window
+let g:netrw_browse_split=4
+" open splits to the right
+let g:netrw_altv=1
+" treeview
+let g:netrw_liststyle=3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-" racer config (rust autocomplete)
-let g:racer_cmd = "/home/me/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+"" racer config (rust autocomplete)
+"let g:racer_cmd = "/home/me/.cargo/bin/racer"
+"let g:racer_experimental_completer = 1
+"au FileType rust nmap gd <Plug>(rust-def)
+"au FileType rust nmap gs <Plug>(rust-def-split)
+"au FileType rust nmap gx <Plug>(rust-def-vertical)
+"au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
-let g:rustfmt_autosave = 1 " run rustfmt when saving a file
+"" " javacomplete2
+"" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"" " enable smart (trying to guess import option) inserting class imports with F4
+"" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"" imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+"" " enable smart (trying to guess import option) inserting class imports with F4
+"" nmap <F5> <Plug>(JavaComplete-Imports-Add)
+"" imap <F5> <Plug>(JavaComplete-Imports-Add)
+"" " add all missing imports with F6
+"" nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"" imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+"" " add all missing imports with F6
+"" nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+"" imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
-" close Goyo *and* vim with :q
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
 
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-
-" vimux mappings
-" Prompt for a command
-map <Leader>vp :VimuxPromptCommand<CR>
-" Prompt for a make command
-map <Leader>vm :VimuxPromptCommand("make ")<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-" Close runner
-map <Leader>vq :VimuxCloseRunner<CR>
-" Rerun last command
-map <Leader>vv :VimuxRunLastCommand<CR>
-" Stop running command
-map <Leader>vs :VimuxInterruptRunner<CR>
-
-" vim-notes
-let g:notes_directories = ['~/Dokumente/Notes']
-
-let g:polyglot_disabled = ['latex']	" disable latex in polyglot to use vimtex
-
-" you complete me
-let g:ycm_rust_src_path = '~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:ycm_python_binary_path = 'python'
-
-" " javacomplete2
-" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-" " enable smart (trying to guess import option) inserting class imports with F4
-" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-" imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-" " enable smart (trying to guess import option) inserting class imports with F4
-" nmap <F5> <Plug>(JavaComplete-Imports-Add)
-" imap <F5> <Plug>(JavaComplete-Imports-Add)
-" " add all missing imports with F6
-" nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-" imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-" " add all missing imports with F6
-" nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-" imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1
-endif
-
-let g:licenses_copyright_holders_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
-let g:licenses_authors_name = 'Brandl, Valentin <mail+rust@vbrandl.net>'
-
-" vim: set filetype=vim ts=8 sw=2 tw=120 noet :
