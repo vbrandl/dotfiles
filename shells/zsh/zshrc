@@ -96,7 +96,10 @@ export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 # export MANPATH="/home/me/.linuxbrew/share/man:$MANPATH"
 # export INFOPATH="/home/me/.linuxbrew/share/info:$INFOPATH"
 fpath=(~/.zsh/completions $fpath)
-#  vim: set filetype=zsh ts=4 sw=4 tw=0 et :
 
 # added by travis gem
 [ -f /home/me/.travis/travis.sh ] && source /home/me/.travis/travis.sh
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+export PATH="/home/me/.guix-profile/bin${PATH:+:}$PATH"
+TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S\nmaxmem\t%M MB\nfaults\t%F'
+#  vim: set filetype=zsh ts=4 sw=4 tw=0 et :
