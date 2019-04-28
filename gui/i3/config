@@ -256,7 +256,12 @@ exec_always feh --bg-scale /home/me/Bilder/wallpaper/wall.png
 exec_always conky -c ~/.conkyrc
 # map esc to capslock
 exec_always setxkbmap -option caps:escape
+exec_always setxkbmap -layout 'de(nodeadkeys),eu'
+exec_always setxkbmap -option 'grp:alt_shift_toggle'
 # start polybar
 exec_always --no-startup-id ~/bin/polybar.sh &
+
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+
 
 #  vim: set filetype=conf ts=4 sw=2 tw=120 et :
