@@ -143,6 +143,12 @@ Plug 'neovimhaskell/haskell-vim'
 " elm support
 Plug 'elmcast/elm-vim'
 
+" clojure support
+Plug 'tpope/vim-fireplace'
+
+" purescript
+Plug 'frigoeu/psc-ide-vim'
+
 "" nerdtree file manager
 "Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 "Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
