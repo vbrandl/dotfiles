@@ -20,7 +20,9 @@ antigen bundle rand-quote
 antigen bundle https://github.com/bobthecow/git-flow-completion
 
 antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
+# antigen theme robbyrussell
 # antigen theme https://github.com/agnoster/agnoster-zsh-theme.git agnoster
+# antigen theme candy
 
 antigen apply
 
