@@ -248,10 +248,10 @@ exec_always xbindkeys
 
 # exec_once exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec dunst
-exec /home/me/.screenlayout/dual.sh
+exec $HOME/.screenlayout/dual.sh
 
 #Set background
-exec_always feh --bg-scale /home/me/Bilder/wallpaper/wall.png
+exec_always feh --bg-scale $HOME/Bilder/wallpaper/wall.png
 
 exec_always conky -c ~/.conkyrc
 # map esc to capslock
