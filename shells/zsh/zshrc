@@ -1,7 +1,6 @@
 source ~/antigen/antigen.zsh
 
 antigen bundle robbyrussell/oh-my-zsh lib/
-antigen use oh-my-zsh
 antigen bundle jump
 
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -16,15 +15,7 @@ antigen bundle cargo
 # magnet link to torrent file with magnet_to_torrent
 antigen bundle torrent
 
-antigen bundle rupa/z
-
-# maven
-antigen bundle mvn
-
 antigen bundle rand-quote
-
-# ssh-agent
-antigen bundle ssh-agent
 
 antigen bundle https://github.com/bobthecow/git-flow-completion
 
