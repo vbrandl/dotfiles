@@ -20,6 +20,9 @@ Plug 'tpope/vim-surround'
 " make plugin commands repeatable
 Plug 'tpope/vim-repeat'
 
+" autodetect tabwidth
+Plug 'tpope/vim-sleuth'
+
 " dispatch into tmux panes
 Plug 'tpope/vim-dispatch', Cond(!empty($TMUX))
 
