@@ -67,7 +67,7 @@ alias prm=". $HOME/tools/prm/prm.sh"
 source /etc/profile.d/vte.sh
 
 # load nix
-. /home/me/.nix-profile/etc/profile.d/nix.sh
+[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 
 . ~/.drone/drone.vbrandl.net
 
