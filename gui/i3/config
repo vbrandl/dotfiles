@@ -218,7 +218,7 @@ smart_gaps on
 smart_borders on
 
 #custom bindings
-bindsym $mod+shift+x exec i3lock-fancy
+bindsym $mod+shift+x exec ~/bin/lock.sh
 
 # Make screenshot
 bindsym Print exec teiler --quick image area | xclip
@@ -229,7 +229,7 @@ bindsym $mod+t exec teiler
 # shutdown menu
 set $mode_system System:   L :  | S :  | P :  | R :  | E : 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym l exec --no-startup-id ~/bin/lock.sh, mode "default"
     bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default
     bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
