@@ -79,6 +79,8 @@ endif
 set autoindent
 " smart indent; stop indent when closing brackets etc
 set smartindent
+" two spaces after .?! when joining lines
+set joinspaces
 
 " searching
 " highlight search result
