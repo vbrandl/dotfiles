@@ -29,6 +29,7 @@ antigen apply
 export PATH=~/bin:~/.gem/ruby/2.5.0/bin:$PATH
 
 source $HOME/.cargo/env
+[ -f $(which sccache) ] && export RUSTC_WRAPPER=sccache
 
 # fix font rendering in Java
 export JAVA_OPTS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
