@@ -1,6 +1,10 @@
 
 ##### teiler configuration file ######
 
+_rofi () {
+    rofi -kb-accept-entry "!Return" "$@"
+}
+
 # general variables
 
 # the path where images, videos and pastes should be saved
@@ -9,12 +13,13 @@ vid_path=$HOME/Videos/Screencasts
 paste_path=$HOME/Dokumente/Pastes
 
 # set viewer for images and videos plus editor for images
-viewer=geeqie
+# viewer=geeqie
+viewer=feh
 editor=pinta
 player=vlc
 
 # Hitting Enter will upload
-always_ul=1
+# always_ul=1
 
 # Uploading options
 # Possible Choices for img_ul: fb, scp, s3, imgur
