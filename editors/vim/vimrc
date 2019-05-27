@@ -21,6 +21,7 @@ syntax enable
 let g:solarized_term_italics=1
 " filetype-specific syntax highlighting groups
 let g:solarized_extra_hi_groups=1
+let g:solarized_termtrans=1
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
 set background=dark
@@ -39,7 +40,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "highlight Comment cterm=italic
 "highlight htmlArg cterm=italic
 
-"highlight Normal ctermbg=NONE guibg=NONE
+" highlight Normal ctermbg=NONE guibg=NONE
 "highlight NonText ctermbg=NONE guibg=NONE
 
 " files and backups
