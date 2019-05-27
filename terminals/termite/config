@@ -154,4 +154,4 @@ color15 = #f3f3f3
 #border_width = 0.5
 #roundness = 2.0
 
-/* vim: set filetype=dosini ts=4 sw=4 tw=120 noet :*/
+; vim: set filetype=dosini ts=4 sw=4 tw=120 noet :
