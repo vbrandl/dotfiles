@@ -152,6 +152,12 @@ Plug 'tpope/vim-fireplace'
 " purescript
 Plug 'frigoeu/psc-ide-vim'
 
+" racket
+Plug 'wlangstroth/vim-racket'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+Plug 'vim-scripts/scribble.vim'
+
 "" nerdtree file manager
 "Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 "Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
