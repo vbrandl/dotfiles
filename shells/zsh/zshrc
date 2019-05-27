@@ -46,8 +46,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export REPORTTIME=10
 
 # better shell colors
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# Base16 Shell
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# [ -n "$PS1" ] && \
+#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # alias to upload a file to sprunge.us
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
