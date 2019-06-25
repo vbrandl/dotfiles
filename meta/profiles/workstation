@@ -1,3 +1,4 @@
+compton
 conky
 dunst
 gdb
@@ -6,6 +7,7 @@ gnupg
 i3
 i3blocks
 ncmpcpp
+polybar
 profile
 qt
 rofi
