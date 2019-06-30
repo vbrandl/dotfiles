@@ -96,28 +96,30 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " run rustfmt when saving a file
 let g:rustfmt_autosave=1
 
-" deoplete for auto completion
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup=1
-" deoplete completion for rust
-Plug 'sebastianmarkow/deoplete-rust'
-let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path = '$(rustc --print sysroot)/lib/rustlib/src/rust/src'
-if executable('rustc')
-    " if src installed via rustup, we can get it by running
-    " rustc --print sysroot then appending the rest of the path
-    let rustc_root = systemlist('rustc --print sysroot')[0]
-    let rustc_src_dir = rustc_root . '/lib/rustlib/src/rust/src'
-    if isdirectory(rustc_src_dir)
-        let g:deoplete#sources#rust#rust_source_path = rustc_src_dir
-    endif
-endif
+" " deoplete for auto completion
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup=1
+" " deoplete completion for rust
+" Plug 'sebastianmarkow/deoplete-rust'
+" let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+" " let g:deoplete#sources#rust#rust_source_path = '$(rustc --print sysroot)/lib/rustlib/src/rust/src'
+" if executable('rustc')
+"     " if src installed via rustup, we can get it by running
+"     " rustc --print sysroot then appending the rest of the path
+"     let rustc_root = systemlist('rustc --print sysroot')[0]
+"     let rustc_src_dir = rustc_root . '/lib/rustlib/src/rust/src'
+"     if isdirectory(rustc_src_dir)
+"         let g:deoplete#sources#rust#rust_source_path = rustc_src_dir
+"     endif
+" endif
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }				" rust autocomplete
 " let g:racer_cmd = "/usr/bin/racer"
