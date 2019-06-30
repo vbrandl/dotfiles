@@ -1,7 +1,7 @@
 [bar/top]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 34
+height = 27
 
 background = #00000000
 foreground = #ccffffff
@@ -11,6 +11,7 @@ line-size = 16
 
 spacing = 2
 padding-right = 5
+padding-left = 5
 module-margin = 4
 
 font-0 = NotoSans-Regular:size=8;-1
@@ -19,7 +20,8 @@ font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
-modules-left = powermenu mpd
+; modules-left = powermenu mpd
+modules-left = mpd
 modules-right = volume xbacklight wireless-network wired-network battery date
 
 tray-position = right
@@ -84,7 +86,8 @@ full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
+format-full =
+; format-full = <ramp-capacity> <label-full>
 
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = #f53c3c
@@ -271,7 +274,7 @@ ping-interval = 10
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
-label-disconnected =  not connected
+label-disconnected =
 label-disconnected-foreground = #66
 
 ramp-signal-0 = 
@@ -292,6 +295,7 @@ interface = enp1s0
 interval = 3.0
 
 label-connected =    %{T3}%local_ip%%{T-}
+label-disconnected =
 label-disconnected-foreground = #66
 
 [module/xkeyboard]
@@ -313,37 +317,37 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ; ramp-volume-3 = 
 
-[module/powermenu]
-type = custom/menu
+; [module/powermenu]
+; type = custom/menu
 
-format-padding = 5
+; format-padding = 5
 
-label-open = 
-label-close = 
+; label-open = 
+; label-close = 
 
-menu-0-0 = Terminate WM
-menu-0-0-foreground = #fba922
-menu-0-0-exec = bspc quit -1
-menu-0-1 = Reboot
-menu-0-1-foreground = #fba922
-menu-0-1-exec = menu_open-1
-menu-0-2 = Power off
-menu-0-2-foreground = #fba922
-menu-0-2-exec = menu_open-2
+; menu-0-0 = Terminate WM
+; menu-0-0-foreground = #fba922
+; menu-0-0-exec = bspc quit -1
+; menu-0-1 = Reboot
+; menu-0-1-foreground = #fba922
+; menu-0-1-exec = menu_open-1
+; menu-0-2 = Power off
+; menu-0-2-foreground = #fba922
+; menu-0-2-exec = menu_open-2
 
-menu-1-0 = Cancel
-menu-1-0-foreground = #fba922
-menu-1-0-exec = menu_open-0
-menu-1-1 = Reboot
-menu-1-1-foreground = #fba922
-menu-1-1-exec = sudo reboot
+; menu-1-0 = Cancel
+; menu-1-0-foreground = #fba922
+; menu-1-0-exec = menu_open-0
+; menu-1-1 = Reboot
+; menu-1-1-foreground = #fba922
+; menu-1-1-exec = sudo reboot
 
-menu-2-0 = Power off
-menu-2-0-foreground = #fba922
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = #fba922
-menu-2-1-exec = menu_open-0
+; menu-2-0 = Power off
+; menu-2-0-foreground = #fba922
+; menu-2-0-exec = sudo poweroff
+; menu-2-1 = Cancel
+; menu-2-1-foreground = #fba922
+; menu-2-1-exec = menu_open-0
 
 [module/clock]
 type = internal/date
