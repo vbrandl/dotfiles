@@ -209,13 +209,13 @@ client.placeholder          #000000 #0c0c0c #ffffff  #000000   #0c0c0c
 
 client.background           #111111
 
-set $default_gaps_inner 10
-set $default_gaps_outer -4
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
+# set $default_gaps_inner 10
+# set $default_gaps_outer -10
+# gaps inner $default_gaps_inner
+# gaps outer $default_gaps_outer
 
-smart_gaps on
-smart_borders on
+# smart_gaps on
+# smart_borders on
 
 #custom bindings
 bindsym $mod+shift+x exec ~/bin/lock.sh
