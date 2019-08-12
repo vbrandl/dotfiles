@@ -257,7 +257,7 @@ exec_always feh --bg-scale $HOME/Bilder/wallpaper/wall.png
 exec_always conky -c ~/.conkyrc
 # map esc to capslock
 exec_always setxkbmap -option caps:escape
-exec_always setxkbmap -layout 'de(nodeadkeys),eu'
+exec_always setxkbmap -layout 'eu'
 exec_always setxkbmap -option 'grp:alt_shift_toggle'
 # start polybar
 exec_always --no-startup-id ~/bin/polybar.sh &
