@@ -108,5 +108,9 @@ export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
 export PATH="$HOME/.guix-profile/bin${PATH:+:}$PATH"
 
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
+export PATH="${NPM_PACKAGES}/bin:$PATH"
+
 TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S\nmaxmem\t%M MB\nfaults\t%F'
 #  vim: set filetype=zsh ts=4 sw=4 tw=0 et :
