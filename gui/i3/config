@@ -78,7 +78,7 @@ bindsym $mod+a focus parent
 
 #Set custom appliation shortcuts
 # Start rofi
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun -matching fuzzy
 
 #set variables for workspaces
 set $workspace1 "1: "
