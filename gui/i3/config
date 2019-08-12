@@ -126,6 +126,7 @@ new_window none
 
 #assign programs to specific windows
 assign [class="Firefox"] $workspace1
+assign [class="firefox"] $workspace1
 assign [class="Thunderbird"] $workspace7
 assign [class="Pidgin"] $workspace4
 assign [class="Thunar"] $workspace5
