@@ -146,7 +146,7 @@ let g:licenses_authors_name='Brandl, Valentin <mail@vbrandl.net>'
 Plug 'neovimhaskell/haskell-vim'
 
 " elm support
-Plug 'elmcast/elm-vim'
+" Plug 'elmcast/elm-vim'
 
 " clojure support
 Plug 'tpope/vim-fireplace'
@@ -155,10 +155,10 @@ Plug 'tpope/vim-fireplace'
 Plug 'frigoeu/psc-ide-vim'
 
 " racket
-Plug 'wlangstroth/vim-racket'
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-Plug 'vim-scripts/scribble.vim'
+" Plug 'wlangstroth/vim-racket'
+" Plug 'luochen1990/rainbow'
+" let g:rainbow_active = 1
+" Plug 'vim-scripts/scribble.vim'
 
 "" nerdtree file manager
 "Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
