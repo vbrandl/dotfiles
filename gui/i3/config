@@ -138,6 +138,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [class="Keepassx2"] floating enable
 for_window [class="keepassxc"] floating enable
+for_window [class="KeePassXC"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Pinentry-gtk-2$"] floating enable
 
