@@ -41,6 +41,9 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# don't follow the mouse
+focus_follows_mouse no
+
 # move focused window vim style
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
