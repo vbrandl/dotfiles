@@ -1,5 +1,13 @@
 # ~/.profile
 
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+PATH="$HOME/.node/bin:$PATH"
+NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 # start window manager on login
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     exec startx
@@ -7,9 +15,3 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 fi
 #  vim: set filetype=zsh ts=4 sw=4 tw=120 et :
 
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:$HOME/.pub-cache/bin"
-PATH="$HOME/.node/bin:$PATH"
-NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
